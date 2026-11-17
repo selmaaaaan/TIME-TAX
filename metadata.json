@@ -1,0 +1,8 @@
+{
+  "name": "Remix Time Tax",
+  "description": "Visualize and eliminate campus waiting times to reclaim lost productivity with real-time institutional analytics and efficiency tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

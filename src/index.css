@@ -1,0 +1,256 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background-color: #FAF8F3;
+    color: #08090B;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+  }
+
+  .font-mono, .tabular-nums {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Strict Mutual Exclusivity: Desktop Top Navbar vs Mobile Bottom Dock */
+.mobile-bottom-dock {
+  position: fixed !important;
+  bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
+  left: 14px !important;
+  right: 14px !important;
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .desktop-top-navbar {
+    display: none !important;
+  }
+  .mobile-bottom-dock {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .desktop-top-navbar {
+    display: flex !important;
+  }
+  .mobile-bottom-dock {
+    display: none !important;
+  }
+}
+
+/* Smooth Duolingo & UNSEEN CSS Keyframe Animations */
+@keyframes duoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes duoPulseRing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes duoWaveHand {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(12deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes duoPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-duo-float {
+  animation: duoFloat 3.2s ease-in-out infinite;
+}
+
+.animate-duo-pulse {
+  animation: duoPulseRing 3.2s ease-in-out infinite;
+}
+
+.animate-duo-wave {
+  animation: duoWaveHand 1.8s ease-in-out infinite;
+  transform-origin: 162px 102px;
+}
+
+.animate-duo-pop {
+  animation: duoPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* UNSEEN + Duolingo Tactile 3D Component Classes */
+.duo-card,
+.card-light {
+  background-color: #FFFFFF;
+  color: #08090B;
+  border: 1.5px solid rgba(8, 9, 11, 0.1);
+  border-radius: 1.75rem;
+  box-shadow: 0 4px 0 rgba(8, 9, 11, 0.08);
+}
+
+.card-dark {
+  background-color: #08090B;
+  color: #FAF8F3;
+  border: 1.5px solid rgba(205, 242, 43, 0.28);
+  border-radius: 1.75rem;
+  box-shadow: 0 4px 0 #000000, 0 14px 28px rgba(8, 9, 11, 0.2);
+}
+
+.duo-btn-primary,
+.btn-tactile-lime {
+  background-color: #CDF22B;
+  color: #08090B;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 1rem;
+  border: 1.5px solid #08090B;
+  box-shadow: 0 4px 0 #95ba07, 0 10px 24px rgba(205, 242, 43, 0.25);
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.14s ease;
+}
+
+.duo-btn-primary:hover,
+.btn-tactile-lime:hover {
+  background-color: #D6FB00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #95ba07, 0 14px 28px rgba(205, 242, 43, 0.35);
+}
+
+.duo-btn-primary:active,
+.btn-tactile-lime:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #95ba07, 0 4px 12px rgba(205, 242, 43, 0.2);
+}
+
+.btn-tactile-dark {
+  background-color: #08090B;
+  color: #CDF22B;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 1rem;
+  border: 1.5px solid #08090B;
+  box-shadow: 0 4px 0 #000000, 0 10px 24px rgba(8, 9, 11, 0.25);
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-tactile-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #000000, 0 14px 28px rgba(8, 9, 11, 0.32);
+}
+
+.btn-tactile-dark:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #000000;
+}
+
+.duo-btn-secondary,
+.btn-tactile-secondary {
+  background-color: #FFFFFF;
+  color: #08090B;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(8, 9, 11, 0.2);
+  box-shadow: 0 3px 0 rgba(8, 9, 11, 0.12);
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.14s ease;
+}
+
+.duo-btn-secondary:hover,
+.btn-tactile-secondary:hover {
+  background-color: #ECFFB6;
+  border-color: #08090B;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 rgba(8, 9, 11, 0.18);
+}
+
+.duo-btn-secondary:active,
+.btn-tactile-secondary:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(8, 9, 11, 0.12);
+}
+
+.btn-tactile-danger {
+  background-color: #FFF5F5;
+  color: #FF2A00;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 1rem;
+  border: 1.5px solid #FF2A00;
+  box-shadow: 0 3px 0 rgba(255, 42, 0, 0.25);
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.14s ease, color 0.14s ease;
+}
+
+.btn-tactile-danger:hover {
+  background-color: #FF2A00;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #b81d00;
+}
+
+.btn-tactile-danger:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #b81d00;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: #FAF8F3 !important;
+    color: #08090B !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
